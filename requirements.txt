@@ -1,0 +1,3 @@
+flask==1.1.1
+flask-material==0.1.1
+uwsgi==2.0.18

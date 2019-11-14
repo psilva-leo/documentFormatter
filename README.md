@@ -14,12 +14,22 @@ pip install -r requirements.txt
 
 ### Installing
 
-Utilizando o docker, basta utilizar o seguintes comandos para rodar o sistema:
+Utilizando o docker, basta utilizar o seguintes comandos para rodar o sistema em http://localhost:8080
 
 ```
 docker build -t document-formatter .
 docker run -p 8080:8080 document-formatter
 ```
+
+### Desenvolvimento
+
+Para desenvolver utiliza-se uma instância de debug do Flask (app.py). Ao rodar o comando abaixo, uma instância do Flask 
+é inicializada em http://localhost:8000
+
+```
+python app.py
+```
+
 
 ## Authors
 

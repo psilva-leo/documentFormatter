@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block container %}
+  <main>
+    <div class="row">
+      <form class="col s12" action="/json.html" method="post">
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="json-textarea" name="json-textarea" class="materialize-textarea"></textarea>
+            <label for="json-textarea">Json</label>
+          </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+      </form>
+    </div>
+
+    <div class="top-pad">
+    {% for line in json_data %}
+      <div class="well">
+        <h2>
+          <small>{{ line['price'] }}</small>
+        </h2>
+      </div>
+    {% endfor %}
+  </div>
+
+  </main>
+{% endblock %}

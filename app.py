@@ -1,15 +1,24 @@
-from flask import Flask, render_template
-from flask_material import Material
+from flask import Flask, render_template, request
 
 
 def create_app():
     app = Flask(__name__)
-    Material(app)
     print('Application started!')
 
     @app.route('/')
     def index():
-        return render_template('index.html')
+        return json()
+
+    @app.route('/json.html', methods=['GET', 'POST'])
+    def json():
+
+        json_data = []
+        if request.method == 'POST':
+            request_data = request.form.to_dict(flat=False)
+            print(request_data)
+            json_data = [{'price': 'um'}, {'price': 'dois'}]
+
+        return render_template('json.html', json_data=json_data)
 
     return app
 

@@ -16,6 +16,9 @@
       </div>
     </nav>
     <main>
+      {% if elapsed_time is not none %}
+        <p>{{ elapsed_time }}</p>
+      {% endif %}
       {% block container %}
       {% endblock %}
     </main>

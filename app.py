@@ -1,4 +1,6 @@
-from flask import Flask, url_for, render_template
+import time
+
+from flask import Flask, url_for, render_template, g
 from blueprints import json_blueprint
 
 
@@ -10,6 +12,10 @@ def create_app():
     @app.route('/', methods=['GET'])
     def index():
         return render_template(url_for('json_page.json'))
+
+    @app.before_request
+    def before_request():
+        g.start_time = time.time()
 
     print('Application started!')
 

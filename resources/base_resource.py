@@ -31,3 +31,9 @@ class BaseResource(Resource):
             return "{0:.4f}".format(time.time() - g.start_time)
 
         return None
+
+    def _get_text(self):
+        request_data = request.form.to_dict(flat=False)
+        request_text = request_data[self._document_name + '-textarea'][0]
+
+        return request_text

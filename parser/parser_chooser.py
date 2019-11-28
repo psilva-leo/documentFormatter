@@ -6,10 +6,10 @@ class ParserChooser(object):
     def __init__(self):
 
         self.__parsers = dict(
-            json=JSONParser
+            json=JSONParser()
         )
 
-    def get_parser(self, parser: str) -> object:
+    def get_parser(self, parser: str):
 
         try:
             return self.__parsers[parser]

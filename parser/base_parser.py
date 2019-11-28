@@ -2,6 +2,7 @@ class BaseParser(object):
 
     def __init__(self):
 
+        self.var = 1
         self._setup()
 
     def _setup(self):

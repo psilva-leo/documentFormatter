@@ -2,57 +2,50 @@
 
 {% block container %}
 
-  <div class="row" style="padding-top: 20px">
+  <div class="row" style="padding-top: 30px">
     <div class="col s10 offset-s1 m5 offset-m1">
       <form class="col s12" action="/json.html" method="post">
-        <div class="row">
-          <div class="col s12">
-            <button class="btn waves-effect waves-light btn-small experian-pink" type="submit" name="action">Submit</button>
+        <div class="row valign-wrapper z-depth-2 experian-blue" style="padding: 10px; border-radius: 5px;">
+          <div class="col s4">
+            <button class="btn waves-effect waves-light btn-small experian-pink" type="submit" name="action" style="font-weight: bold">format</button>
           </div>
-
-          <label>
-            <input type="checkbox" name="minify"/>
-            <span>Minify</span>
-          </label>
-
-          <label>
-            <input type="checkbox" name="sort_keys"/>
-            <span>Sort Keys</span>
-          </label>
-
-
+          <div class="col s4">
+            <label>
+              <input type="checkbox" name="minify"/>
+              <span style="color: white; font-weight: bold">minify</span>
+            </label>
+          </div>
+          <div class="col s4">
+            <label>
+              <input type="checkbox" name="sort_keys"/>
+              <span style="color: white; font-weight: bold">sort</span>
+            </label>
+          </div>
         </div>
-
-          <div class="input-field col s12">
-            <select name="indent">
-              <option value="2">Indent 2</option>
-              <option value="4">Indent 4</option>
-              <option value="8">Indent 8</option>
-            </select>
-            <label>Materialize Select</label>
-          </div>
-
-
-
         <div class="row">
           <div class="input-field col s12">
-            <textarea id="ugly-json-textarea" name="json-textarea" class="materialize-textarea"></textarea>
-            <label for="ugly-json-textarea">Input</label>
+            <textarea id="ugly-json-textarea" name="json-textarea" class="materialize-textarea" style="font-family: 'Comfortaa', cursive; font-size: 90%;">{{ request_text }}</textarea>
+            <label for="ugly-json-textarea">input</label>
           </div>
         </div>
       </form>
     </div>
     <div class="col s10 offset-s1 m5">
-      <div class="row">
-        <div class="col s12">
-          <button class="btn waves-effect waves-light btn-small experian-pink" type="submit" name="action">Submit</button>
+      <div class="row z-depth-2 experian-blue" style="padding: 10px; border-radius: 5px;">
+        <div class="col s12 center">
+          <a class="btn btn-small experian-pink" style="font-weight: bold">
+            <i class="material-icons left">access_time</i>
+            {% if elapsed_time is not none %}
+              <span style="text-transform: lowercase !important;">{{ elapsed_time }}</span>
+            {% endif %}
+          </a>
         </div>
       </div>
       <div class="row">
         <div class="col s12">
           <div class="input-field col s12">
-            <textarea id="beauty-json-textarea" name="json-textarea" class="materialize-textarea">{{ formatted_json }}</textarea>
-            <label for="beauty-json-textarea">Output</label>
+            <textarea disabled id="beauty-json-textarea" name="json-textarea" class="materialize-textarea {% if error is not none %}experian-pink-text{% else %}experian-black-text{% endif %}" style="font-family: 'Comfortaa', cursive; font-size: 90%;">{% if error is none %}{{ formatted_json }}{% else %}{{ error }}{% endif %}</textarea>
+            <label for="beauty-json-textarea">output</label>
           </div>
         </div>
       </div>

@@ -28,7 +28,7 @@ class BaseResource(Resource):
     @staticmethod
     def _get_elapsed_time():
         if request.method == 'POST':
-            return "{0:.4f}".format(time.time() - g.start_time)
+            return "{0:.4f} ms".format(1000 * (time.time() - g.start_time))
 
         return None
 

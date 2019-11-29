@@ -4,31 +4,31 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Doc {formatter}</title>
+    <title>Document {formatter}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/colors.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/overriden.css') }}">
   </head>
   <body style="font-family: 'Comfortaa', cursive;">
-    <nav class="experian-blue">
+    <nav class="experian-blue" style="height: 45px;">
       <div class="nav-wrapper">
-        <h5 style="font-weight: lighter">
+        <h5 style="font-weight: lighter; margin: 10px">
           &nbsp Document
           <span style="font-weight: bold">{ formatter } </span>
         </h5>
       </div>
     </nav>
     <main>
-      {% if elapsed_time is not none %}
-        <p>{{ elapsed_time }}</p>
-      {% endif %}
       {% block container %}
       {% endblock %}
     </main>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <footer class="page-footer experian-blue">
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    {% block scripts %}
-    {% endblock %}
+        {% block script %}
+        {% endblock %}
   </body>
 </html>

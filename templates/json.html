@@ -9,7 +9,31 @@
           <div class="col s12">
             <button class="btn waves-effect waves-light btn-small experian-pink" type="submit" name="action">Submit</button>
           </div>
+
+          <label>
+            <input type="checkbox" name="minify"/>
+            <span>Minify</span>
+          </label>
+
+          <label>
+            <input type="checkbox" name="sort_keys"/>
+            <span>Sort Keys</span>
+          </label>
+
+
         </div>
+
+          <div class="input-field col s12">
+            <select name="indent">
+              <option value="2">Indent 2</option>
+              <option value="4">Indent 4</option>
+              <option value="8">Indent 8</option>
+            </select>
+            <label>Materialize Select</label>
+          </div>
+
+
+
         <div class="row">
           <div class="input-field col s12">
             <textarea id="ugly-json-textarea" name="json-textarea" class="materialize-textarea"></textarea>
@@ -35,5 +59,8 @@
     </div>
   </div>
 
+{% endblock %}
 
+{% block scripts %}
+  <script src="{{ url_for('static', filename='javascript/json_page.js') }}"></script>
 {% endblock %}

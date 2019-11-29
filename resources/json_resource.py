@@ -14,4 +14,4 @@ class JsonResource(BaseResource):
         request_text = self._get_text()
         formatted_json, error = self._parser.parse_data(data=request_text)
 
-        return self._render_template(json_data=formatted_json, error=error)
+        return self._render_template(formatted_json=formatted_json, error=error)

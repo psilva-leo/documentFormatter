@@ -1,24 +1,23 @@
-from flask import Flask, render_template, request
+import time
+
+from flask import Flask, url_for, render_template, g
+from blueprints import json_blueprint
 
 
 def create_app():
     app = Flask(__name__)
-    print('Application started!')
 
-    @app.route('/')
+    app.register_blueprint(json_blueprint.json_blueprint)
+
+    @app.route('/', methods=['GET'])
     def index():
-        return json()
+        return render_template(url_for('json_page.json'))
 
-    @app.route('/json.html', methods=['GET', 'POST'])
-    def json():
+    @app.before_request
+    def before_request():
+        g.start_time = time.time()
 
-        json_data = []
-        if request.method == 'POST':
-            request_data = request.form.to_dict(flat=False)
-            print(request_data)
-            json_data = [{'price': 'um'}, {'price': 'dois'}]
-
-        return render_template('json.html', json_data=json_data)
+    print('Application started!')
 
     return app
 
